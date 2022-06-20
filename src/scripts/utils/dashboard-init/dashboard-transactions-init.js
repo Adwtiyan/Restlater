@@ -1,4 +1,4 @@
-import transaction from '../../data/transaction-test'
+import transaction from '../../data/transactionAPI'
 import { createDashboardTransactionTableTemplate } from '../../views/template dashboard/template-dashboard'
 
 const Transactions = () => {

@@ -19,7 +19,7 @@ const dashboard = {
       $('.submenu').slideUp()
     }
     )
-    
+
     $('body').append(`
     <footer class="footer">
     @Copyright 2022, Restlater Corporation
