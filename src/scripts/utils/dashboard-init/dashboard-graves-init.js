@@ -1,4 +1,4 @@
-import grave from '../../data/graveAPI'
+import grave from '../../data/grave-test'
 import { createDashboardGravesTableTemplate } from '../../views/template dashboard/template-dashboard'
 
 const Graves = () => {
@@ -9,50 +9,40 @@ const Graves = () => {
 
   renderGrave.blokA.forEach(tomb => {
     if (!tomb.available) {
-      $('#graveListTable').append(`
-                <tr>
+      $('#graveA').append(`
                     <td>${tomb.id}</td>
-                </tr>
             `)
     }
   })
 
   renderGrave.blokB.forEach(tomb => {
     if (!tomb.available) {
-      $('#graveListTable').append(`
-                <tr>
+      $('#graveB').append(`  
                     <td>${tomb.id}</td>
-                </tr>
             `)
     }
   })
 
   renderGrave.blokC.forEach(tomb => {
     if (!tomb.available) {
-      $('#graveListTable').append(`
-                <tr>
+      $('#graveC').append(`
                     <td>${tomb.id}</td>
-                </tr>
             `)
     }
   })
 
   renderGrave.blokD.forEach(tomb => {
     if (!tomb.available) {
-      $('#graveListTable').append(`
-                <tr>
+      $('#graveD').append(`
                     <td>${tomb.id}</td>
-                </tr>
             `)
     }
   })
 
   renderGrave.blokE.forEach(tomb => {
     if (!tomb.available) {
-      $('#graveListTable').append(`
-                <tr>
+      $('#graveE').append(`
                     <td>${tomb.id}</td>
-                </tr>
             `)
     }
   })
