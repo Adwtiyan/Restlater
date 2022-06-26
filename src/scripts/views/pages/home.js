@@ -1,5 +1,7 @@
 import grave from '../../data/graveAPI'
+import { isUserSignedIn } from '../../utils/auth'
 import getInitial from '../../utils/get-blok-initial'
+import noAccountPopup from '../../utils/popup/no_account-popup'
 
 const home = {
   render () {
@@ -9,7 +11,7 @@ const home = {
       <img src="./images/logo-large.png" alt="Restlater Logo" height='470px' width='420px'>
       <div id='right-hero'>
         <h1>
-          Prepare yourself and your family for the things that will surely come to human life
+          Prepare yourself and your family for the things that will surely come to human life. Reserve a grave that will be yours forever.
         </h1>
         <a href="javascript:;" onclick="document.location.hash='blok';">
           RESERVE NOW
@@ -87,13 +89,13 @@ const home = {
 
     $('.blok-item').click((e) => {
       const id = e.currentTarget.id
-      document.location.hash = `#/blok/${id}`
+      checkUser(id)
     })
 
     $('.blok-item').on('keydown', (e) => {
       if (e.keyCode === 13) {
         const id = e.currentTarget.id
-        document.location.hash = `#/blok/${id}`
+        checkUser(id)
       }
     })
   }
@@ -101,6 +103,14 @@ const home = {
 
 const getUnavailable = (slots) => {
   return slots.filter(item => item.available === false).length
+}
+
+const checkUser = (id) => {
+  if (!isUserSignedIn()) {
+    noAccountPopup.popupRender()
+    return undefined
+  }
+  document.location.hash = `#/blok/${id}`
 }
 
 export default home
