@@ -1,8 +1,8 @@
-import grave from '../../data/grave-test'
+import grave from '../../data/graveAPI'
 import { createDashboardGravesTableTemplate } from '../../views/template dashboard/template-dashboard'
 
-const Graves = () => {
-  const renderGrave = grave
+const Graves = async () => {
+  const renderGrave = await grave.getAllBlok()
   $('#grave-dashboard').addClass('active')
   $('#list_table').empty()
   $('#list_table').append(createDashboardGravesTableTemplate())

@@ -103,7 +103,7 @@ const createDashboardGravesTableTemplate = () => `
     </table>
 `
 
-const createEditGravesDashboardTemplate = () => `
+const createEditGravesDashboardTemplate = (tomb) => `
     <h2>Edit Blok A Graves</h2>
     <input type="hidden" id="hfRowIndex" value="" />
     <table id="editGravesA" class="table-data">
