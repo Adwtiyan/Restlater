@@ -90,10 +90,10 @@ const changeColumnInput = (parentChild, index) => {
 
     transaction.setTransaction({
       ...prevTransaction[index],
-      slots: addedSlots.join(','),
+      slots: editSlots,
       date: getDate(),
       total: new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'idr' }).format(
-        addedSlots.length * price
+        editSlots.length * price
       )
     }, index)
 
