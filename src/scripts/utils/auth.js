@@ -56,11 +56,9 @@ function signinUI () {
 
 const LogoutInitiator = {
   signOutUser () {
-    console.log(firebase.auth().currentUser.displayName)
-    console.log(getAuth().currentUser.displayName)
     // Sign out of Firebase.
     swal({
-      title: 'LogOut?',
+      title: 'Do you want to logout?',
       text: ' ',
       icon: 'warning',
       buttons: true,
@@ -89,13 +87,12 @@ async function authStateObserver (userData) {
   if (userData) {
     // User is signed in!
     // Get the signed-in user's profile pic and name.
-    console.log(userData)
     const userName = userData.displayName
     if (!sessionStorage.getItem('user')) {
       const userAPIData = await user.getUserById(userData.uid)
-      console.log(userAPIData)
       sessionStorage.setItem('user', JSON.stringify({ ...userAPIData }))
     }
+    const additionalData = JSON.parse(sessionStorage.getItem('user'))
     // Set the user's profile pic and name.
     userNameElement.textContent = userName
 
@@ -110,6 +107,13 @@ async function authStateObserver (userData) {
     $('#user-name').on('click', () => {
       window.location.hash = '/profile/' + userData.uid
     })
+
+    if (additionalData.admin === true && !$('#dashboard').length) {
+      const dashboard = '<a href="#/dashboard" id="dashboard">DASHBOARD</a>'
+      $(dashboard).insertBefore('#user-name')
+    } else {
+      $('#dashboard').remove()
+    }
   } else {
     // User is signed out!
     // Hide user's profile and sign-out button.
